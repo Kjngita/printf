@@ -1,17 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_related.c                                   :+:      :+:    :+:   */
+/*   char_related.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
-/*   Updated: 2025/05/08 15:16:43 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/08 23:31:30 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	writechar(char c)
+#include "libftprintf.h"
+
+int	writechar(int c)
 {
-	write(1, &c, 1);
+	char	single;
+
+	single = (char)c;
+	write(1, &single, 1);
 	return (1);
+}
+int	writestr(char *text)
+{
+	int	i;
+
+	i = 0;
+	if (text == NULL)
+		return (-68);
+	while (text[i])
+	{
+		write(1, &text[i], 1);
+		i++;
+	}
+	return (i);
 }
