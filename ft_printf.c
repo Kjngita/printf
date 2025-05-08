@@ -6,18 +6,12 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/07 21:12:58 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/08 15:52:08 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-int	ft_examination(char *check)
-{
-	if (check == '%')
-		write (1, '%', 1);
-		return (1);
-	
-}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	reservation;
@@ -32,14 +26,22 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++; //skip the % sign
-			printed += ft_examination(&format);
+			printed += ft_examination(&reservation, &format);
 			format++; //skip the type specifier
 		}
 		else
-			write(1, &format, 1);
+			writechar(&format);
 		format++;
 		printed++;
 	}
 	va_end(reservation);
 	return (printed);
+}
+
+int	ft_examination(va_list *ap, char check)
+{
+	if (check == '%')
+		return (writechar('%'));
+	if (check == 'c')
+		return (writechar(va_arg(ap, int)));
 }

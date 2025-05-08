@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   string_related.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/07 16:25:30 by gita              #+#    #+#             */
-/*   Updated: 2025/05/08 15:17:18 by gita             ###   ########.fr       */
+/*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
+/*   Updated: 2025/05/08 15:16:43 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINT_H
-# define LIBFTPRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
-
-int	writechar(char c);
-
-#endif
+int	writechar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
