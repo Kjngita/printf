@@ -25,7 +25,7 @@ fclean: clean
 re: fclean all
 
 test: main.c $(NAME)
-	cc $(FLAGS) $^ -o cuckoo
+	cc $^ -o cuckoo
 	./cuckoo
 	rm $(OFILES)
 

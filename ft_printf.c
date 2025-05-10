@@ -6,11 +6,11 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/08 23:42:26 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/10 17:59:51 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_examination(va_list *ap, char check)
 {
@@ -22,8 +22,11 @@ int	ft_examination(va_list *ap, char check)
 		return (writestr(va_arg(*ap, char *)));
 	if (check == 'd' || check == 'i')
 		return (normal_num(va_arg(*ap, int)));
+	if (check == 'u')
+		return (ud_num(va_arg(*ap, unsigned int)));
 	return (-68);
 }
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	reservation;
@@ -37,7 +40,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++; //skip the % sign
+			format++;
 			printed += ft_examination(&reservation, *format);
 		}
 		else

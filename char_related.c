@@ -6,11 +6,11 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
-/*   Updated: 2025/05/08 23:31:30 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/10 18:00:10 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	writechar(int c)
 {
@@ -20,13 +20,17 @@ int	writechar(int c)
 	write(1, &single, 1);
 	return (1);
 }
+
 int	writestr(char *text)
 {
 	int	i;
 
 	i = 0;
 	if (text == NULL)
-		return (-68);
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
 	while (text[i])
 	{
 		write(1, &text[i], 1);
