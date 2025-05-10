@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:16:59 by gita              #+#    #+#             */
-/*   Updated: 2025/05/10 17:49:19 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/10 22:07:32 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_examination(va_list *ap, char check);
 
 int	writechar(int c);
 int	writestr(char *text);
+int	stringlength(char *s);
 
 int	intlen(long num);
 int	normal_num(int n);
