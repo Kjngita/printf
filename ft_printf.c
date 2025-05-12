@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/10 22:09:16 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/12 23:21:53 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	ft_examination(va_list *ap, char check)
 	if (check == 'd' || check == 'i')
 		return (normal_num(va_arg(*ap, int)));
 	if (check == 'u')
-		return (ud_num(va_arg(*ap, unsigned int)));
-	// if (check == 'x')
-	// 	return (hex_x(va_arg(*ap, unsigned int)));
+		return (fancy_num(va_arg(*ap, unsigned int), "0123456789"));
+	if (check == 'x')
+		return (fancy_num(va_arg(*ap, unsigned int), "0123456789abcdef"));
+	if (check == 'X')
+		return (fancy_num(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
 	return (-68);
 }
 

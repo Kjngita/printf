@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:29:19 by gita              #+#    #+#             */
-/*   Updated: 2025/05/10 22:09:49 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/12 23:26:51 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,27 @@ int	normal_num(int n)
 	return (length);
 }
 
-int	ud_num(unsigned int positive)
+int	fancy_num(unsigned int patient, char *base)
 {
-	int		length;
 	long	copy;
+	int		result;
+	int		i;
+	int		baselen;
 
-	length = intlen(positive);
-	copy = positive;
-	if (copy >= 10)
-		ud_num(copy / 10);
-	writechar(copy % 10 + '0');
-	return (length);
+	copy = patient;
+	result = 0;
+	i = 0;
+	baselen = stringlength(base);
+	if (copy == 0)
+		result++;
+	while (copy != 0)
+	{
+		copy /= baselen;
+		result++;
+	}
+	copy = patient;
+	if (copy >= baselen)
+		fancy_num(copy / baselen, base);
+	writechar(base[copy % baselen]);
+	return (result);
 }
-// int hex_x(unsigned int patient, char *base)
-// {
-// 	int		length;
-// 	long	copy;
-// 	int		baselen;
-
-// 	length = intlen(patient);
-// 	copy = patient;
-// 	baselen = ft_strlen(base);
-// 	if (copy >= baselen)
-// 		hex_x(copy / baselen);
-// 	writechar(copy % baselen + '0'); //why + '0'?
-// 	return (length);
-// }
