@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 16:41:04 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 19:58:51 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	reservation;
 	int		printed;
+	int		check;
 
 	printed = 0;
 	va_start(reservation, format);
@@ -47,12 +48,19 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			printed += examination(&reservation, *format);
+			check = examination(&reservation, *format);
+			if (check == -1)
+				return (-1);
+			else
+				printed += check;
 		}
 		else
 		{
-			writechar(*format);
-			printed++;
+			check = writechar(*format);
+			if (check == -1)
+				return (-1);
+			else
+				printed++;
 		}
 		format++;
 	}

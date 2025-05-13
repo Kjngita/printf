@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:29:19 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 17:06:41 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 19:38:43 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,34 @@ int	normal_num(int n)
 {
 	int		length;
 	long	copy;
+	int		check;
 
 	length = intlen(n);
 	copy = n;
 	if (copy < 0)
 	{
-		writechar('-');
+		if (writechar('-') == -1)
+			return (-1);
 		copy = -copy;
 	}
 	if (copy >= 10)
 		normal_num(copy / 10);
-	writechar(copy % 10 + '0');
-	return (length);
+	check = writechar(copy % 10 + '0');
+	if (check == -1)
+		return (-1);
+	else
+		return (length);
 }
 
 int	fancy_num(uintptr_t patient, char *base)
 {
-	long	copy;
-	int		result;
-	int		i;
-	int		baselen;
+	unsigned long	copy;
+	int				result;
+	int				i;
+	unsigned long	baselen;
 
 	copy = patient;
 	result = 0;
-	i = 0;
 	baselen = stringlength(base);
 	if (copy == 0)
 		result++;
@@ -69,19 +73,29 @@ int	fancy_num(uintptr_t patient, char *base)
 	copy = patient;
 	if (copy >= baselen)
 		fancy_num(copy / baselen, base);
-	writechar(base[copy % baselen]);
-	return (result);
+	i = writechar(base[copy % baselen]);
+	if (i == -1)
+		return (-1);
+	else
+		return (result);
 }
 
 int	finger(uintptr_t ptr, char *base)
 {
 	int	result;
+	int	check;
 	
 	if (ptr == 0)
 		return (writestr("(nil)"));
 	result = writestr("0x");
 	if (result == -1)
 		return (-1);
-	result += fancy_num(ptr, base);
-	return (result);
+	check = fancy_num(ptr, base);
+	if (check == -1)
+		return (-1);
+	else
+	{
+		result += check;
+		return (result);
+	}
 }
