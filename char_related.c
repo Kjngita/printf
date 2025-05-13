@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
-/*   Updated: 2025/05/12 22:36:33 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 15:52:02 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 int	writechar(int c)
 {
 	char	single;
+	int		guard;
 
 	single = (char)c;
-	write(1, &single, 1);
-	return (1);
+	guard = write(1, &single, 1);
+	if (guard == -1)
+		return (-1);
+	else
+		return (1);
 }
 
 int	writestr(char *text)
@@ -28,12 +32,14 @@ int	writestr(char *text)
 	i = 0;
 	if (text == NULL)
 	{
-		write (1, "(null)", 6);
+		if (write (1, "(null)", 6) == -1)
+			return (-1);
 		return (6);
 	}
 	while (text[i])
 	{
-		write(1, &text[i], 1);
+		if (write(1, &text[i], 1) == -1)
+			return (-1);
 		i++;
 	}
 	return (i);

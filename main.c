@@ -18,9 +18,12 @@ int main()
 	// ft_printf("\tMult params. Returns: %d\tft_printf\n", ft_printf("%carvel %s %i", loner, army, ily));
 	// printf("\tMult params. Returns: %d\tprintf\n\n", printf("%carvel %s %i", loner, army, ily));
 
-	ft_printf("\t~u~ Returns: %d\tft_printf\n", ft_printf("%u", 4294967295));
-	printf("\t~u~ Returns: %d\tprintf\n\n", printf("%u", 4294967295));
+	// ft_printf("\t~u~ Returns: %d\tft_printf\n", ft_printf("%u", 4294967295));
+	// printf("\t~u~ Returns: %d\tprintf\n\n", printf("%u", 4294967295));
 
-	ft_printf("\t~x~ Returns: %d\tft_printf\n", ft_printf("%X", 123123123));
-	printf("\t~x~ Returns: %d\tprintf\n\n", printf("%X", 123123123));
+	// ft_printf("\t~x~ Returns: %d\tft_printf\n", ft_printf("%X", 123123123));
+	// printf("\t~x~ Returns: %d\tprintf\n\n", printf("%X", 123123123));
+
+	ft_printf("\t~p~ Returns: %d\tft_printf\n", ft_printf("%p", -9223372036854775808));
+	printf("\t~p~ Returns: %d\tprintf\n\n", printf("%p", -9223372036854775808));
 }

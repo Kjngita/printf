@@ -2,8 +2,7 @@ NAME = libftprintf.a
 
 CFILES = ft_printf.c \
 	char_related.c \
-	num_related.c \
-	ft_calloc.c
+	num_related.c
 
 OFILES = $(CFILES:.c=.o)
 

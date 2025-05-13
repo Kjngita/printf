@@ -6,13 +6,13 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/12 23:21:53 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 16:41:04 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_examination(va_list *ap, char check)
+int	examination(va_list *ap, char check)
 {
 	if (check == '%')
 		return (writechar('%'));
@@ -28,6 +28,8 @@ int	ft_examination(va_list *ap, char check)
 		return (fancy_num(va_arg(*ap, unsigned int), "0123456789abcdef"));
 	if (check == 'X')
 		return (fancy_num(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
+	if (check == 'p')
+		return (finger(va_arg(*ap, uintptr_t), "0123456789abcdef"));
 	return (-68);
 }
 
@@ -45,7 +47,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			printed += ft_examination(&reservation, *format);
+			printed += examination(&reservation, *format);
 		}
 		else
 		{
