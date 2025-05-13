@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:29:19 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 19:38:43 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 23:15:24 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	normal_num(int n)
 		if (writechar('-') == -1)
 			return (-1);
 		copy = -copy;
-	}
+	}	
 	if (copy >= 10)
 		normal_num(copy / 10);
 	check = writechar(copy % 10 + '0');
@@ -63,6 +63,8 @@ int	fancy_num(uintptr_t patient, char *base)
 	copy = patient;
 	result = 0;
 	baselen = stringlength(base);
+	if (baselen == 0)
+		return (-1);
 	if (copy == 0)
 		result++;
 	while (copy != 0)
@@ -84,7 +86,7 @@ int	finger(uintptr_t ptr, char *base)
 {
 	int	result;
 	int	check;
-	
+
 	if (ptr == 0)
 		return (writestr("(nil)"));
 	result = writestr("0x");

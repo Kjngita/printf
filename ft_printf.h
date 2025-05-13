@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:16:59 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 17:11:37 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 22:31:41 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		ft_printf(const char *format, ...);
 int		examination(va_list *ap, char check);
 
-int		writechar(int c);
+int		writechar(unsigned int c);
 int		writestr(char *text);
 int		stringlength(char *s);
 

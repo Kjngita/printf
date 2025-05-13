@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 20:24:09 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 22:46:36 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	examination(va_list *ap, char check)
 	if (check == '%')
 		return (writechar('%'));
 	if (check == 'c')
-		return (writechar(va_arg(*ap, int)));
+		return (writechar(va_arg(*ap, unsigned int)));
 	if (check == 's')
 		return (writestr(va_arg(*ap, char *)));
 	if (check == 'd' || check == 'i')
@@ -46,14 +46,14 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format++ == '%')
-		{
-			check = examination(&reservation, *format);
-			format++;
-		}
+			check = examination(&reservation, *format++);
 		else
-			check = writechar(*(format-1));
+			check = writechar(*(format - 1));
 		if (check == -1)
+		{
+			va_end(reservation);
 			return (-1);
+		}
 		else
 			printed += check;
 	}

@@ -6,13 +6,13 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 19:16:58 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/13 22:42:24 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	writechar(int c)
+int	writechar(unsigned int c)
 {
 	char	single;
 	int		guard;
