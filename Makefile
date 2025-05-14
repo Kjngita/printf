@@ -24,7 +24,7 @@ fclean: clean
 
 re: fclean all
 
-test: testMika.c $(NAME)
+test: testYuan.c $(NAME)
 	cc $^ -o cuckoo
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes \
 	--track-origins=yes ./cuckoo
