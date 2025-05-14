@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:29:19 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 23:15:24 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/14 14:53:22 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	normal_num(int n)
 {
 	int		length;
 	long	copy;
-	int		check;
+	int		check_recursion;
 
 	length = intlen(n);
 	copy = n;
@@ -45,9 +45,12 @@ int	normal_num(int n)
 		copy = -copy;
 	}	
 	if (copy >= 10)
-		normal_num(copy / 10);
-	check = writechar(copy % 10 + '0');
-	if (check == -1)
+	{
+		check_recursion = normal_num(copy / 10);
+		if (check_recursion == -1)
+			return (-1);
+	}
+	if (writechar(copy % 10 + '0') == -1)
 		return (-1);
 	else
 		return (length);
@@ -57,7 +60,6 @@ int	fancy_num(uintptr_t patient, char *base)
 {
 	unsigned long	copy;
 	int				result;
-	int				i;
 	unsigned long	baselen;
 
 	copy = patient;
@@ -74,9 +76,9 @@ int	fancy_num(uintptr_t patient, char *base)
 	}
 	copy = patient;
 	if (copy >= baselen)
-		fancy_num(copy / baselen, base);
-	i = writechar(base[copy % baselen]);
-	if (i == -1)
+		if (fancy_num(copy / baselen, base) == -1)
+			return (-1);
+	if (writechar(base[copy % baselen]) == -1)
 		return (-1);
 	else
 		return (result);
