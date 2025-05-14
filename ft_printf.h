@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:16:59 by gita              #+#    #+#             */
-/*   Updated: 2025/05/14 15:49:19 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/14 16:31:32 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 # include <stdint.h>
 
 int		ft_printf(const char *format, ...);
-int		examination(va_list *ap, char check);
 
 int		writechar(unsigned int c);
 int		writestr(char *text);
-int		stringlength(char *s);
 
-int		intlen(long num);
 int		normal_num(int n);
 int		fancy_num(uintptr_t patient, char *base);
 int		finger(uintptr_t ptr, char *base);

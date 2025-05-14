@@ -6,13 +6,13 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:29:19 by gita              #+#    #+#             */
-/*   Updated: 2025/05/14 14:53:22 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/14 16:44:17 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	intlen(long num)
+static int	intlen(long num)
 {
 	int	step;
 
@@ -28,6 +28,18 @@ int	intlen(long num)
 		step++;
 	}
 	return (step);
+}
+
+static int	stringlength(char *s)
+{
+	int	measure;
+
+	measure = 0;
+	if (s == NULL)
+		return (-68);
+	while (*s++)
+		measure++;
+	return (measure);
 }
 
 int	normal_num(int n)
@@ -65,7 +77,7 @@ int	fancy_num(uintptr_t patient, char *base)
 	copy = patient;
 	result = 0;
 	baselen = stringlength(base);
-	if (baselen == 0)
+	if (baselen <= 0)
 		return (-1);
 	if (copy == 0)
 		result++;

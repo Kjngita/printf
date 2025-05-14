@@ -6,13 +6,13 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:33:56 by gita              #+#    #+#             */
-/*   Updated: 2025/05/14 15:50:04 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/14 16:36:19 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	examination(va_list *ap, char check)
+static int	examination(va_list *ap, char check)
 {
 	if (check == '%')
 		return (writechar('%'));
@@ -30,7 +30,7 @@ int	examination(va_list *ap, char check)
 		return (fancy_num(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
 	if (check == 'p')
 		return (finger(va_arg(*ap, uintptr_t), "0123456789abcdef"));
-	return (-68);
+	return (-1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -42,20 +42,21 @@ int	ft_printf(const char *format, ...)
 	printed = 0;
 	va_start(reservation, format);
 	if (format == NULL)
-		return (-68);
+		return (-1);
 	while (*format)
 	{
-		if (*format++ == '%')
-			check = examination(&reservation, *format++);
-		else
-			check = writechar(*(format - 1));
-		if (check == -1)
+		if (*format == '%')
 		{
-			va_end(reservation);
-			return (-1);
+			format++;
+			check = examination(&reservation, *format);
 		}
 		else
+			check = writechar(*format);
+		if (check == -1)
+			return (va_end(reservation), -1);
+		else
 			printed += check;
+		format++;
 	}
 	va_end(reservation);
 	return (printed);

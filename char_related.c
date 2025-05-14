@@ -6,7 +6,7 @@
 /*   By: gita <gita@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:48 by gita              #+#    #+#             */
-/*   Updated: 2025/05/13 22:42:24 by gita             ###   ########.fr       */
+/*   Updated: 2025/05/14 16:29:56 by gita             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,4 @@ int	writestr(char *text)
 		i++;
 	}
 	return (i);
-}
-
-int	stringlength(char *s)
-{
-	int	measure;
-
-	measure = 0;
-	if (s == NULL)
-		return (-68);
-	while (*s++)
-		measure++;
-	return (measure);
 }
